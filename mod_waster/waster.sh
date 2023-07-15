@@ -7,7 +7,7 @@ start(){
   count=`ps -ef |grep -e "/root/waster" |grep -v "grep" |wc -l`
   if [ $count -eq 0 ];then
     echo "Starting $SERVICE_NAME ..."
-    /root/waster --mem=5 &
+    /root/waster waster --mem=5 &
   fi
   echo "$SERVICE_NAME started ..."
 }
