@@ -1,11 +1,19 @@
 package main
 
 import (
-	"github.com/mizuki1412/go-core-kit/init/initkit"
-	"waster/cmd"
+	"github.com/mizuki1412/go-core-kit/cli"
+	"github.com/spf13/cobra"
+	"oputils/cmd"
 )
 
 func main() {
-	initkit.LoadConfig()
-	cmd.Execute()
+	cli.RootCMD(&cobra.Command{
+		Use: "main",
+		Run: func(cmd *cobra.Command, args []string) {
+
+		},
+	})
+	cmd.TcpConCmd()
+	cmd.WasterCmd()
+	cli.Execute()
 }

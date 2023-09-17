@@ -23,7 +23,7 @@ func Run() {
 	//}
 	log.Println("核心: ", num)
 
-	spath := configkit.GetStringD("spath")
+	spath := configkit.GetString("spath")
 	ssize := configkit.GetInt("ssize", 0)
 	if spath != "" && ssize > 0 {
 		log.Println("开始生成文件", spath, ssize, "GB")
