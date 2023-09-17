@@ -2,7 +2,11 @@
 
 运维工具
 
-# mod_waster
+# cmd: tcp-con
+
+检查端口是否连通 30s超时
+
+# cmd: waster
 
 消耗cpu、内存、存储。
 
@@ -20,3 +24,7 @@ run `./waster -h` for help
 ## 生成20GB的文件 /demo/test.bin， 生成完后，将执行内存和cpu占用
 ./waster --mem=2 --spath=/demo/test.bin --ssize=20
 ```
+
+# cmd: influx
+
+执行influx命令和导出结果
