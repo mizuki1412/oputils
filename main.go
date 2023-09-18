@@ -15,5 +15,6 @@ func main() {
 	})
 	cmd.TcpConCmd()
 	cmd.WasterCmd()
+	cmd.ApiTest()
 	cli.Execute()
 }
