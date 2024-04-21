@@ -1,12 +1,11 @@
 package cmd
 
 import (
-	"github.com/mizuki1412/go-core-kit/cli"
 	"github.com/spf13/cobra"
 	"oputils/mod_waster"
 )
 
-func WasterCmd() {
+func WasterCmd() *cobra.Command {
 	wasterCMD := &cobra.Command{
 		Use: "waster",
 		Run: func(cmd *cobra.Command, args []string) {
@@ -19,5 +18,5 @@ func WasterCmd() {
 	wasterCMD.Flags().Int("mem", 20, "内存增加的%，必填")
 	wasterCMD.Flags().Int("ssize", 0, "增加的GB")
 	wasterCMD.Flags().String("spath", "", "生成的filename")
-	cli.AddChildCMD(wasterCMD)
+	return wasterCMD
 }

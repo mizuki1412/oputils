@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mizuki1412/go-core-kit/cli"
+	"github.com/mizuki1412/go-core-kit/v2/cli"
 	"github.com/spf13/cobra"
 	"oputils/cmd"
 )
@@ -13,7 +13,7 @@ func main() {
 
 		},
 	})
-	cmd.TcpConCmd()
-	cmd.WasterCmd()
+	cli.AddChildCMD(cmd.WasterCmd())
+	cli.AddChildCMD(cmd.Test())
 	cli.Execute()
 }

@@ -1,11 +1,11 @@
 package mod_waster
 
 import (
-	"github.com/mizuki1412/go-core-kit/class"
-	"github.com/mizuki1412/go-core-kit/library/filekit"
-	"github.com/mizuki1412/go-core-kit/library/timekit"
-	"github.com/mizuki1412/go-core-kit/service/configkit"
-	"github.com/mizuki1412/go-core-kit/service/cronkit"
+	"github.com/mizuki1412/go-core-kit/v2/class"
+	"github.com/mizuki1412/go-core-kit/v2/library/filekit"
+	"github.com/mizuki1412/go-core-kit/v2/library/timekit"
+	"github.com/mizuki1412/go-core-kit/v2/service/configkit"
+	"github.com/mizuki1412/go-core-kit/v2/service/cronkit"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/mem"
 	"github.com/spf13/cast"

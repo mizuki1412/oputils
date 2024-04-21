@@ -1,10 +1,10 @@
 package mod_api_test
 
 import (
-	"github.com/mizuki1412/go-core-kit/class/exception"
-	"github.com/mizuki1412/go-core-kit/library/filekit"
-	"github.com/mizuki1412/go-core-kit/library/jsonkit"
-	"github.com/mizuki1412/go-core-kit/service/configkit"
+	"github.com/mizuki1412/go-core-kit/v2/class/exception"
+	"github.com/mizuki1412/go-core-kit/v2/library/filekit"
+	"github.com/mizuki1412/go-core-kit/v2/library/jsonkit"
+	"github.com/mizuki1412/go-core-kit/v2/service/configkit"
 )
 
 type Unit struct {
@@ -26,6 +26,6 @@ func Run() {
 		panic(exception.New(err.Error()))
 	}
 	for _, e := range units {
-
+		println(e)
 	}
 }
