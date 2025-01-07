@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/mizuki1412/go-core-kit/cli"
+	"github.com/mizuki1412/go-core-kit/v2/cli"
 	"github.com/spf13/cobra"
 	"oputils/mod_waster"
 )
