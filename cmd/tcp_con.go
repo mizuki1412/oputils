@@ -1,13 +1,14 @@
 package cmd
 
 import (
+	"github.com/mizuki1412/go-core-kit/v2/cli"
 	"github.com/mizuki1412/go-core-kit/v2/service/configkit"
 	"github.com/spf13/cobra"
 	"net"
 	"time"
 )
 
-func TcpConCmd() *cobra.Command {
+func TcpConCmd() {
 	tcpConnectCMD := &cobra.Command{
 		Use: "tcp-con",
 		Run: func(cmd *cobra.Command, args []string) {
@@ -22,5 +23,5 @@ func TcpConCmd() *cobra.Command {
 		},
 	}
 	tcpConnectCMD.Flags().String("addr", "", "ip:port")
-	return tcpConnectCMD
+	cli.AddChildCMD(tcpConnectCMD)
 }
