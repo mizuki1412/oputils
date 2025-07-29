@@ -14,6 +14,5 @@ func main() {
 		},
 	})
 	cli.AddChildCMD(cmd.WasterCmd())
-	cli.AddChildCMD(cmd.Test())
 	cli.Execute()
 }
