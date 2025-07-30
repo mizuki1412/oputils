@@ -12,8 +12,8 @@ func WasterCmd() *cobra.Command {
 			mod_waster.Run()
 		},
 	}
-	wasterCMD.Flags().Int("cpu", 20, "设定要增加的cpu%")
-	wasterCMD.Flags().Int("mem", 20, "设定的内存%")
+	wasterCMD.Flags().Int("cpu", 0, "设定要增加的cpu%")
+	wasterCMD.Flags().Int("mem", 0, "设定要增加的内存/MB")
 	wasterCMD.Flags().Int("ssize", 0, "增加的GB")
 	wasterCMD.Flags().String("spath", "", "生成的filename")
 	return wasterCMD

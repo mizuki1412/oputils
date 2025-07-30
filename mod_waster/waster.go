@@ -4,7 +4,6 @@ import (
 	"github.com/mizuki1412/go-core-kit/v2/class"
 	"github.com/mizuki1412/go-core-kit/v2/library/c"
 	"github.com/mizuki1412/go-core-kit/v2/library/filekit"
-	"github.com/mizuki1412/go-core-kit/v2/library/timekit"
 	"github.com/mizuki1412/go-core-kit/v2/service/configkit"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/mem"
@@ -58,26 +57,23 @@ func Run() {
 			})
 		}
 	}
-
-	for {
-		percent, _ := cpu.Percent(time.Second, false)
-		memInfo, _ := mem.VirtualMemory()
-		m0 := configkit.GetInt("mem")
-		mm := class.NewDecimal(memInfo.UsedPercent)
-		// 内存调整
-		if m0 > 0 {
-			m := class.NewDecimal(m0)
-			if mm.Float64() <= m.Float64() {
-				freeMemory()
-				allocateMemory(uint64(m.Sub(mm).Div(class.NewDecimal(100)).Mul(class.NewDecimal(memInfo.Total)).Decimal.IntPart() + 1))
-			} else if memoryHog != nil && mm.Float64()-m.Float64() >= 10 {
-				// 如果实际超过10%
-				freeMemory()
-			}
-		}
-		log.Println("cpu%:", class.NewDecimal(percent[0]).Round(2).Decimal.String(), ", mem%: ", mm.Round(2).Decimal.String())
-		timekit.Sleep(2000)
+	// 考虑到系统可能对内存平衡，采用增加固定内存的方式
+	memAdd := configkit.GetInt("mem")
+	if memAdd > 0 {
+		allocateMemory(uint64(memAdd * 1024 * 1024))
+		//m := class.NewDecimal(m0)
+		//if mm.Float64() <= m.Float64() {
+		//	freeMemory()
+		//	allocateMemory(uint64(m.Sub(mm).Div(class.NewDecimal(100)).Mul(class.NewDecimal(memInfo.Total)).Decimal.IntPart() + 1))
+		//} else if memoryHog != nil && mm.Float64()-m.Float64() >= 10 {
+		//	// 如果实际超过10%
+		//	freeMemory()
+		//}
 	}
+	percent, _ := cpu.Percent(time.Second, false)
+	memInfo, _ := mem.VirtualMemory()
+	mm := class.NewDecimal(memInfo.UsedPercent)
+	log.Println("cpu%:", class.NewDecimal(percent[0]).Round(2).Decimal.String(), ", mem%: ", mm.Round(2).Decimal.String())
 }
 
 var memoryHog []byte
